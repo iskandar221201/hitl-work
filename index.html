@@ -5,7 +5,10 @@
 
   /* NAV */
   nav { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 3rem; border-bottom: 1px solid #f0f0f0; position: sticky; top: 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); z-index: 100; }
-  .nav-logo { font-size: 1rem; font-weight: 600; color: #1a1a1a; text-decoration: none; letter-spacing: -0.02em; }
+  .nav-logo { font-size: 0.95rem; font-weight: 800; color: #1a1a1a; text-decoration: none; letter-spacing: -0.03em; display: flex; align-items: center; gap: 0; }
+  .nav-logo .logo-hitl { color: #1a1a1a; }
+  .nav-logo .logo-sep { color: #e85d2e; margin: 0 0.15em; font-weight: 300; font-size: 1.1em; }
+  .nav-logo .logo-work { color: #e85d2e; font-weight: 300; letter-spacing: 0.05em; font-size: 0.85em; text-transform: uppercase; }
   .nav-links { display: flex; gap: 2rem; align-items: center; }
   .nav-links a { font-size: 0.875rem; color: #555; text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: #1a1a1a; }
@@ -164,7 +167,9 @@
 </style>
 
 <nav>
-  <a href="https://github.com/iskandar221201/human-in-the-loop-workflow" class="nav-logo">human-in-the-loop</a>
+  <a href="https://github.com/iskandar221201/human-in-the-loop-workflow" class="nav-logo">
+    <span class="logo-hitl">HITL</span><span class="logo-sep">·</span><span class="logo-work">Work</span>
+  </a>
   <div class="nav-links">
     <a href="https://github.com/iskandar221201/human-in-the-loop-workflow">Docs</a>
     <a href="https://github.com/iskandar221201/human-in-the-loop-workflow">Philosophy</a>
@@ -328,15 +333,15 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-top">
-    <span class="footer-copy">© 2026 human-in-the-loop-workflow · MIT</span>
+    <span class="footer-copy">© 2026 <strong style="color:#1a1a1a;">HITL·Work</strong> · MIT License</span>
     <div class="footer-links">
       <a href="https://github.com/iskandar221201/human-in-the-loop-workflow">GitHub</a>
-      <a href="#">Docs</a>
-      <a href="#">iskandar221201</a>
+      <a href="https://github.com/iskandar221201/human-in-the-loop-workflow">Docs</a>
+      <a href="https://github.com/iskandar221201" style="color:#e85d2e;">iskandar221201</a>
     </div>
   </div>
   <div class="footer-wordmark">
-    <span>human-in-the-loop</span>
+    <span>HITL<em style="color:#e85d2e; font-style:normal;">·</em>Work</span>
   </div>
 </footer>
 
