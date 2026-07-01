@@ -1,4 +1,4 @@
-# 🧭 HOW TO USE — Three-Agent Dev Workflow
+# 🧭 HOW TO USE — Four-Agent Dev Workflow
 
 ## Philosophy
 
@@ -25,13 +25,13 @@ This workflow trades speed for control. If you want fully automated pipelines, t
 
 ---
 
-## Three Agents, One Flow
+## Four Agents, One Flow
 
 ```
-[ PLANNER ] → prd.md → [ EXECUTOR ] → "Ready for QA" → [ QA ]
-      ↑                       ↑                              ↑
-  you approve             you trigger                  you decide
-  the spec first          execution                    ship or revise
+[ PLANNER ] → prd.md → [ EXECUTOR ] → "Ready for QA" → [ QA ] → PASS → [ SKILL EXTRACTOR ]
+      ↑                       ↑                              ↑                    ↑
+  you approve             you trigger                  you decide           you trigger
+  the spec first          execution                    ship or revise       on-demand
 ```
 
 | Agent | File | Role |
@@ -39,6 +39,7 @@ This workflow trades speed for control. If you want fully automated pipelines, t
 | 🧠 Planner | `planner.md` | Architect — writes the spec, never writes code |
 | ⚙️ Executor | `executor.md` | Implementor — follows the spec, never improvises |
 | 🔍 QA | `qa.md` | Verifier — checks output vs spec, never assumes |
+| 📚 Skill Extractor | `skill-extractor.md` | Documentarian — distills patterns into reusable skill files |
 
 ---
 
@@ -95,6 +96,22 @@ Output: a report with a clear status — **PASS / FAIL / PASS WITH WARNINGS** �
 
 ---
 
+### 4. Run the Skill Extractor (optional but recommended)
+Use this after QA returns PASS — especially when a new pattern, module, or convention was introduced.
+
+**Trigger phrases:**
+- "extract skill from this"
+- "document this pattern"
+- "buatin skill.md untuk..."
+
+The Skill Extractor reads the relevant files, identifies recurring patterns and anti-patterns, then **confirms with you before writing anything**. Output is saved to `skills/[scope].md`.
+
+Skills are reusable across future sessions — the Planner and Executor can read them before starting work on familiar modules.
+
+> ⚠️ **This step is optional per feature, but highly recommended after any new module or architectural pattern is introduced.**
+
+---
+
 ## Alternative Entry Points
 
 Not every task needs to start from the Planner.
@@ -106,6 +123,8 @@ Not every task needs to start from the Planner.
 | Executor finished, need verification | QA |
 | Small bug with a clearly bounded scope | Executor (with an inline mini-spec) |
 | Auditing existing code | QA |
+| New pattern just shipped and needs documenting | Skill Extractor |
+| Onboarding a new codebase | Skill Extractor |
 
 ---
 
@@ -119,6 +138,7 @@ This workflow is slower by design, but **safe by control**:
 - The Executor doesn't improvise when something is unclear
 - The Executor stops and reports if it gets stuck — it never silently skips
 - QA doesn't approve when a Critical issue exists
+- The Skill Extractor confirms patterns with you before documenting them
 
 For a solo developer managing architecture, operations, and delivery all at once — **control beats speed**.
 
@@ -131,6 +151,7 @@ For a solo developer managing architecture, operations, and delivery all at once
 - If an agent says stop → stop, do not push through
 - The spec is a contract — if scope changes, go back to the Planner
 - Never trigger QA on incomplete execution
+- Never let the Skill Extractor write without your confirmation of the patterns
 
 ---
 
