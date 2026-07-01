@@ -35,7 +35,19 @@ Go through every item in the spec and verify:
 | All implementation steps were completed | Read code, match to step |
 | "What NOT to Touch" was respected | Verify untouched files |
 
-### Phase 2 — Definition of Done Checklist
+### Phase 2 — Breaking Changes Verification
+If the spec's "Breaking Changes" section has any YES answers, verify each one:
+
+| Check | Method |
+|---|---|
+| Modified method signatures are handled in all callers | Search all usages |
+| DB schema / migration changes are safe | Read migration file |
+| Dependent modules still work with the change | Read affected modules |
+| Backward compatibility is maintained | Trace call chain |
+
+If the spec says all NO → confirm no breaking changes were introduced anyway. Do not take the spec's word for it — check the actual code.
+
+### Phase 3 — Definition of Done Checklist
 Take the checklist from the spec's "Definition of Done" section.
 Verify each item one by one. Do not assume — check the actual code.
 
@@ -44,7 +56,7 @@ Verify each item one by one. Do not assume — check the actual code.
 - [ ] Item from spec → PASS / FAIL — reason
 ```
 
-### Phase 3 — Code Quality Checks
+### Phase 4 — Code Quality Checks
 Even if spec is met, flag these issues:
 
 **Logic Issues**
@@ -86,6 +98,12 @@ Even if spec is met, flag these issues:
 
 ---
 
+### Breaking Changes
+- [item from spec] → ✅ Handled / ❌ Not handled — [reason]
+- No breaking changes introduced beyond spec → ✅ / ❌
+
+---
+
 ### Definition of Done
 - [ ] [item] → ✅ PASS
 - [ ] [item] → ❌ FAIL — [exact reason and line number]
@@ -111,7 +129,7 @@ Even if spec is met, flag these issues:
 ---
 
 ## Severity Guide
-- **Critical** → broken logic, security hole, spec not met, data loss risk
+- **Critical** → broken logic, security hole, spec not met, data loss risk, unhandled breaking change
 - **Warning** → missing edge case, inconsistent style, leftover debug code
 - **Minor** → cosmetic, naming preference, optional improvement
 
@@ -121,5 +139,6 @@ Even if spec is met, flag these issues:
 - NEVER approve based on assumption — read the actual code
 - NEVER mark as PASS if any Critical issue exists
 - NEVER skip Phase 1 (spec compliance) even if code "looks fine"
+- NEVER trust the spec's "Breaking Changes: all NO" — always verify independently
 - ALWAYS reference the exact file and line number when flagging issues
 - ALWAYS give a clear verdict — no vague "looks mostly okay"
