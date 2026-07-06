@@ -29,6 +29,35 @@ Before writing anything, ask these if not already answered:
 
 Do NOT skip this step. A bad spec wastes more time than asking upfront.
 
+---
+
+### Step 1.5 — Necessity Check (YAGNI + DRY)
+Before planning any solution, answer these questions in order. Stop at the first rung that holds.
+
+1. **Does this need to be built at all?** (YAGNI — You Aren't Gonna Need It)
+   - Is this solving a real, current problem — or a hypothetical future one?
+   - If hypothetical → do not spec it.
+
+2. **Does an existing function, helper, or component already do this?**
+   - Search the codebase before speccing anything new.
+   - If yes → spec its reuse, not a replacement.
+
+3. **Does an already-installed dependency cover this?**
+   - Check what's already in `composer.json`, `package.json`, etc.
+   - If yes → spec using it, not a new install.
+
+4. **Can this be solved by config or data change — not code?**
+   - If yes → spec the config change only.
+
+5. **What is the minimum change that achieves the goal?**
+   - Prefer touching 1 file over 3.
+   - Prefer extending an existing method over creating a new one.
+   - Prefer a simple solution over a "clean" abstraction nobody asked for.
+
+> ⚠️ **If you skip this step, you will over-engineer the spec. Over-engineered specs produce unnecessary code, unnecessary risk, and unnecessary review burden.**
+
+---
+
 ### Step 2 — Read Skill Files Before Planning
 Before writing a single line of the spec, read all relevant skill files.
 
@@ -48,6 +77,8 @@ If no skill file exists → note it in the spec under Context, and write the spe
 
 > ⚠️ **Do NOT write the spec before reading the skill file. A spec that contradicts the skill file will produce wrong code.**
 
+---
+
 ### Step 3 — Write the Spec
 Output a `prd.md` file (or inline spec) with the following structure:
 
@@ -56,6 +87,14 @@ Output a `prd.md` file (or inline spec) with the following structure:
 
 ### Context
 Brief background. Why does this exist?
+
+### Necessity Check
+Document your YAGNI + DRY reasoning before the solution:
+- Does this need to be built? → [Yes/No — reason]
+- Existing function/component reusable? → [Yes: [name] in [file] / No]
+- Existing dependency covers this? → [Yes: [package] / No]
+- Solvable by config change only? → [Yes/No]
+- Minimum scope decision: [what was ruled out and why]
 
 ### Skill Files Read
 List the skill files that were read before writing this spec.
@@ -107,8 +146,11 @@ Checklist the QA agent will verify against.
 - [ ] Implementation follows patterns from skill file
 ```
 
+---
+
 ### Step 4 — Validate the Spec
 Before handing off, self-check:
+- [ ] Did I complete the Necessity Check before writing the solution?
 - [ ] Did I read the relevant skill file(s) before writing this spec?
 - [ ] Do all file paths match the conventions in the skill file?
 - [ ] Do all patterns (naming, response format, error handling) match the skill file?
@@ -118,6 +160,8 @@ Before handing off, self-check:
 - [ ] Is the scope clearly bounded?
 - [ ] Are breaking changes identified and documented?
 - [ ] If breaking changes exist — are affected modules listed with exact impact?
+- [ ] Is this the minimum spec that achieves the goal? Could any step be removed?
+- [ ] Am I reusing existing code where possible — not creating new abstractions?
 
 If any answer is NO → revise before outputting.
 
@@ -136,8 +180,16 @@ If any answer is NO → revise before outputting.
 - NEVER write the spec before reading the relevant skill file(s)
 - NEVER leave ambiguous steps ("update as needed", "handle errors appropriately")
 - NEVER spec a file path or pattern that contradicts the skill file
+- NEVER spec a new abstraction if an existing one covers the need
+- NEVER spec a new dependency if one already installed covers the need
+- NEVER spec complexity that wasn't explicitly requested
+- ALWAYS complete the Necessity Check before writing the solution
+- ALWAYS check the codebase for reusable functions/components before speccing new ones
 - ALWAYS specify exact method names, file paths, return types
+- ALWAYS include a "Necessity Check" section in the spec
 - ALWAYS include a "Skill Files Read" section in the spec
 - ALWAYS include a "What NOT to Touch" section
 - ALWAYS include a "Breaking Changes" section — even if all answers are NO
 - ALWAYS ask if there are active users or live tenants before finalizing the spec
+- ALWAYS prefer the simpler of two approaches that achieve the same result
+- ALWAYS ask: "Is this the minimum change that achieves the goal?" before finalizing
