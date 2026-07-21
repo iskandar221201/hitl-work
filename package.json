@@ -1,0 +1,12 @@
+{
+  "name": "hitl-work",
+  "version": "1.0.0",
+  "type": "module",
+  "bin": {
+    "hitl-work": "./bin/cli.js"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "sha256-file": "^1.0.0"
+  }
+}

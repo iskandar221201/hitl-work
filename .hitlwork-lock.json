@@ -1,0 +1,23 @@
+{
+  "upstream": "https://github.com/iskandar221201/hitl-work",
+  "updated_at": "2026-07-21T06:17:08.504Z",
+  "agents": {
+    "api-agent.md": "eb6dc284ec7801aebea8958154e0c54bcde02b028d85b4c11783afe75714b949",
+    "architecture-review.md": "314e939c8d5d9d5c58082f451760152940bfc827227291a635efc9930fcf8ee7",
+    "coder.md": "b0e184bd1238343f87e3a17f4220ffea05b81e1c268ccef63a36f2d6bf4d498f",
+    "debug.md": "ffb0996067ea30ff028e1c575e3f476a880751509c886e37f3ace0f0c9d07b46",
+    "decomposer.md": "46cef9b6f2e1144b68b556ef1d6d2a755db903a8fea28614a4a6b2df908a4c04",
+    "documentation.md": "2ef253ee2708badff9fa5f1e0aa895929a4f30572604044c835e5a4cb5f53ae8",
+    "doubt-review.md": "445df616d470edf10e4635f1e908fc132f82a9c2fa831c7b461e890a8ffc867c",
+    "frontend-executor.md": "59e137b2909d4e79efe8c2dd7b730008c5efaefd4f704e6100a89b1050a9b98c",
+    "frontend-planner.md": "c912cf867c31321e27c3359baf87fe4a58bf8e54ebb37204a68575d2601d8ce7",
+    "migration-review.md": "6480baeadd0932244db9f74b848ace78f1c78320737515086c1751fc7d8a9ce9",
+    "performance-review.md": "511eb8c3d7343aefbc6d00098214768730414d5e24e31f6c7b02ba83d10b9831",
+    "planner.md": "ec40dc32cf4da44096f922eddd7a452d9fb3bf29d631356404eca30336f2d86a",
+    "qa.md": "f62e379f1eefad521ea2cab35f00c85f5e872e65ee6f853e2a7031b3e837c96d",
+    "security-review.md": "674700fb62144d178c63353b3c38e151b8472aa07bc69ef73f399a54fba37469",
+    "skill-extractor.md": "20eb83d4660edb0929176eb4e2134a7919848ad11855d3e4e7709a2356778474",
+    "ui-skill-extractor.md": "ea3508c298b7c74fe0c88a8f3956f072be3911bce724ff941cd582f4a85e6199",
+    "ui-ux-planner.md": "c524ce021c73d9fce0804158692260c3e302e06ce4434b57c3c032d7768771c1"
+  }
+}
